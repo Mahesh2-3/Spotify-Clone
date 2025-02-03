@@ -11,7 +11,19 @@ body {
     overflow: hidden;
 
 }
-
+.disclaimer{
+        /* bg-[green] text-white text-center p-4 sticky w-[100vw] bottom-0 */
+        background-color: green;
+        color: white;
+        text-align: center;
+        padding: 32px;
+        position: sticky;
+        width: 100vw;
+        bottom: 0;
+}
+.disclaimer p{
+        font-size: larger;
+}
 .search-container {
     position: relative;
     width: 300px;
