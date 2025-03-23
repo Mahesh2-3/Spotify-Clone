@@ -1,4 +1,4 @@
-console.log("this is a spotify clone");
+import config from './config.js';
 let currentsong = new Audio()
 let currfolder = "another";
 let songnames;
