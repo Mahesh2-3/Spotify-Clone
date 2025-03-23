@@ -26,7 +26,7 @@ async function getsongs (folder) {
     ]; // Manually list songs here
 
     currentsong.src = songs[0];
-    await const playAudio = async () => {     try {         await currentsong.play();     } catch (error) {         console.error("Autoplay prevented:", error);     } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });;
+     const playAudio = async () => {     try {         await currentsong.play();     } catch (error) {         console.error("Autoplay prevented:", error);     } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });;
 
     // Populate the list
     let ul = document.querySelector(".list");
