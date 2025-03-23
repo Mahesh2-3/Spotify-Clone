@@ -19,10 +19,10 @@ function secondsToMinutesSeconds(seconds) {
 async function getsongs (folder) {
     currfolder = folder;
     let songs = [
-        `http://127.0.0.1:5501/songs/${currfolder}/song1.mp3`,
-        `http://127.0.0.1:5501/songs/${currfolder}/song2.mp3`,
-        `http://127.0.0.1:5501/songs/${currfolder}/song3.mp3`,
-        `http://127.0.0.1:5501/songs/${currfolder}/song4.mp3`
+        `${config.HOST}/songs/${currfolder}/song1.mp3`,
+        `${config.HOST}/songs/${currfolder}/song2.mp3`,
+        `${config.HOST}/songs/${currfolder}/song3.mp3`,
+        `${config.HOST}/songs/${currfolder}/song4.mp3`
     ]; // Manually list songs here
 
     currentsong.src = songs[0];
