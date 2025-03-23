@@ -26,7 +26,7 @@ async function getsongs (folder) {
     ]; // Manually list songs here
 
     currentsong.src = songs[0];
-    await currentsong.play();
+    await const playAudio = async () => {     try {         await currentsong.play();     } catch (error) {         console.error("Autoplay prevented:", error);     } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });;
 
     // Populate the list
     let ul = document.querySelector(".list");
@@ -85,7 +85,15 @@ async function displayAlbums() {
         e.addEventListener("click", async item => {
             currfolder = item.currentTarget.dataset.folder;
             songs = await getsongs(currfolder);
-            currentsong.play();
+            const playAudio = async () => {
+                
+                try {   
+                    await const playAudio = async () => {
+                        try {   
+                            await currentsong.play();
+                        } catch (error) {
+                            console.error("Autoplay prevented:", error);
+                        } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });;     } catch (error) {         console.error("Autoplay prevented:", error);     } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });;
             playorpause("play");
             settingsongnames();
         });
@@ -106,7 +114,12 @@ async function main() {
             const element = songnames[i];
             element.addEventListener("click",() => {
                 currentsong.src = songs[i]
-                currentsong.play()
+                const playAudio = async () => {
+                    try {
+                        await currentsong.play();
+                    } catch (error) {
+                        console.error("Autoplay prevented:", error);
+                    } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });
                 playorpause("play")
                 settingsongnames()
     
@@ -121,7 +134,12 @@ async function main() {
         element.addEventListener("click", () => {
             if (currentsong.paused) {
                 playorpause("play")
-                currentsong.play()
+                const playAudio = async () => {
+                    try {         
+                        await currentsong.play();
+                    } catch (error) {
+                        console.error("Autoplay prevented:", error);
+                    } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });
             }
             else {
                 playorpause("pause")
@@ -141,7 +159,12 @@ async function main() {
         }
         settingsongnames()
         playorpause("play")
-        currentsong.play()
+        const playAudio = async () => {
+            try {
+                await currentsong.play();
+            } catch (error) { 
+                console.error("Autoplay prevented:", error);
+            } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });
 
     })
     sideicons[1].addEventListener("click", () => {
@@ -155,7 +178,12 @@ async function main() {
         }
         settingsongnames()
         playorpause("play")
-        currentsong.play()
+        const playAudio = async () => {
+            try {  
+                await currentsong.play();
+            } catch (error) {
+                console.error("Autoplay prevented:", error);
+            } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });
     })
     let rfd = document.querySelector(".rfd")
     let dot = document.querySelector(".dot")
@@ -200,7 +228,12 @@ async function main() {
             }
             settingsongnames()
             playorpause("play")
-            currentsong.play()
+            const playAudio = async () => { 
+                try { 
+                    await currentsong.play();
+                } catch (error) { 
+                    console.error("Autoplay prevented:", error);
+                } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });
         }
 
     })
