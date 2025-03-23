@@ -16,7 +16,7 @@ function secondsToMinutesSeconds(seconds) {
 }
 /////////get songs function //////////////
 
-async function getsongs (folder) {
+async function getsongs(folder) {
     currfolder = folder;
     let songs = [
         `${config.HOST}/songs/${currfolder}/song1.mp3`,
@@ -26,7 +26,14 @@ async function getsongs (folder) {
     ]; // Manually list songs here
 
     currentsong.src = songs[0];
-     const playAudio = async () => {     try {         await currentsong.play();     } catch (error) {         console.error("Autoplay prevented:", error);     } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });;
+    const playAudio = async () => {
+        try {
+            await currentsong.play();
+        } catch (error) {
+            console.error("Autoplay prevented:", error);
+        }
+    };
+    document.addEventListener("click", playAudio, { once: true });;
 
     // Populate the list
     let ul = document.querySelector(".list");
@@ -35,7 +42,7 @@ async function getsongs (folder) {
         let songname = songs[i].split(`${currfolder}/`)[1]
             .replaceAll("%20", " ")
             .replaceAll(".mp3", "");
-        
+
         let li = document.createElement("li");
         li.className = "curser";
         li.innerText = songname;
@@ -69,7 +76,7 @@ async function displayAlbums() {
 
     let albumimg = document.querySelector(".albumsimg");
     albumimg.innerHTML = "";
-    
+
     albumData.forEach(album => {
         albumimg.innerHTML += `
             <div data-folder="${album.folder}" class="card">
@@ -85,15 +92,17 @@ async function displayAlbums() {
         e.addEventListener("click", async item => {
             currfolder = item.currentTarget.dataset.folder;
             songs = await getsongs(currfolder);
+
+
             const playAudio = async () => {
-                
-                try {   
-                    await const playAudio = async () => {
-                        try {   
-                            await currentsong.play();
-                        } catch (error) {
-                            console.error("Autoplay prevented:", error);
-                        } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });;     } catch (error) {         console.error("Autoplay prevented:", error);     } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });;
+                try {
+                    await currentsong.play();
+                } catch (error) {
+                    console.error("Autoplay prevented:", error);
+                }
+            };
+            document.addEventListener("click", playAudio, { once: true });
+
             playorpause("play");
             settingsongnames();
         });
@@ -101,30 +110,32 @@ async function displayAlbums() {
 }
 
 async function main() {
-    
+
     songs = await getsongs(currfolder)
     currentsong.src = songs[0]
     settingsongnames()
     // await songsnames()
-    
+
     displayAlbums()
-    currentsong.addEventListener("timeupdate",()=>{
+    currentsong.addEventListener("timeupdate", () => {
         songnames = document.querySelector('.list').getElementsByTagName("li")
         for (let i = 0; i < songnames.length; i++) {
             const element = songnames[i];
-            element.addEventListener("click",() => {
+            element.addEventListener("click", () => {
                 currentsong.src = songs[i]
                 const playAudio = async () => {
                     try {
                         await currentsong.play();
                     } catch (error) {
                         console.error("Autoplay prevented:", error);
-                    } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });
+                    }
+                };
+                document.addEventListener("click", playAudio, { once: true });
                 playorpause("play")
                 settingsongnames()
-    
+
             })
-    
+
         }
     })
 
@@ -135,11 +146,13 @@ async function main() {
             if (currentsong.paused) {
                 playorpause("play")
                 const playAudio = async () => {
-                    try {         
+                    try {
                         await currentsong.play();
                     } catch (error) {
                         console.error("Autoplay prevented:", error);
-                    } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });
+                    }
+                };
+                document.addEventListener("click", playAudio, { once: true });
             }
             else {
                 playorpause("pause")
@@ -162,9 +175,11 @@ async function main() {
         const playAudio = async () => {
             try {
                 await currentsong.play();
-            } catch (error) { 
+            } catch (error) {
                 console.error("Autoplay prevented:", error);
-            } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });
+            }
+        };
+        document.addEventListener("click", playAudio, { once: true });
 
     })
     sideicons[1].addEventListener("click", () => {
@@ -179,16 +194,18 @@ async function main() {
         settingsongnames()
         playorpause("play")
         const playAudio = async () => {
-            try {  
+            try {
                 await currentsong.play();
             } catch (error) {
                 console.error("Autoplay prevented:", error);
-            } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });
+            }
+        };
+        document.addEventListener("click", playAudio, { once: true });
     })
     let rfd = document.querySelector(".rfd")
     let dot = document.querySelector(".dot")
     let line = document.querySelector(".line")
-    currentsong.addEventListener("timeupdate",async () => {
+    currentsong.addEventListener("timeupdate", async () => {
         let cards = document.getElementsByClassName("card")
         for (let i = 0; i < cards.length; i++) {
             const e = cards[i];
@@ -224,16 +241,18 @@ async function main() {
                 currentsong.src = songs[0]
             } else {
                 currentsong.src = songs[index + 1]
-    
+
             }
             settingsongnames()
             playorpause("play")
-            const playAudio = async () => { 
-                try { 
+            const playAudio = async () => {
+                try {
                     await currentsong.play();
-                } catch (error) { 
+                } catch (error) {
                     console.error("Autoplay prevented:", error);
-                } };  // Wait for user interaction document.addEventListener("click", playAudio, { once: true });
+                }
+            };  // Wait for user interaction 
+            document.addEventListener("click", playAudio, { once: true });
         }
 
     })
